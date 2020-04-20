@@ -8,10 +8,17 @@
   CDNで https://unpkg.com/ を利用。実際にブラウザでページで開き、内容を確認できる。
   拡張子の前に .min を付けることでminify化(小容量)で利用できる。
    -->
-  <script src="https://unpkg.com/lodash@4.17.11/lodash.min.js"></script>
+  <!-- lodashを、CDNではなく、ローカルにインストールしたので、CDNのソースはコメントアウト。 -->
+  <!-- <script src="https://unpkg.com/lodash@4.17.11/lodash.min.js"></script> -->
+
 </head>
 <body>
-  Hi, webpack!!
-  <script src="./src/index.js"></script>
+  Hi, webpack! From HTML
+  <!--
+    webpackの導入により、jsファイルはバンドル後に main.js として
+    dist ディレクトリに格納される。
+   -->
+  <!-- <script src="./src/index.js"></script> -->
+  <script src="./dist/main.js"></script>
 </body>
 </html>
