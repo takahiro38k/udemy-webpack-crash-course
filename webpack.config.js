@@ -16,5 +16,9 @@ module.exports = {
     filename: 'main.js',
     // 出力先
     path: outputPath
+  },
+  devServer: {
+    // index.htmlの格納場所を指定し、ブラウザで即時オープンできる。
+    contentBase: outputPath
   }
 }
