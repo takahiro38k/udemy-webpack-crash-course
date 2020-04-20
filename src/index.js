@@ -1,6 +1,7 @@
 import _ from 'lodash'
 // import style from './style.css'
 import './style.css' // styleの取り込みはファイル名のみでOK。
+import logo from './logo.png'
 
 // console.log(style)
 
@@ -40,3 +41,8 @@ console.log(Tiger.say())
 document.body.appendChild(component())
 // HTMLのbodyに'haikei'クラスを登録。
 document.body.classList.add('haikei')
+
+const image = new Image()
+image.src = logo
+// HTMLのimageタグに指定したファイルを設定
+document.body.appendChild(image)

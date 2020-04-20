@@ -33,6 +33,21 @@ module.exports = {
           'style-loader',
           'css-loader',
         ]
+      },
+      {
+        // jpeg jpg 両方とも可とする。
+        // i オプションで大文字・小文字の区別をなくす。
+        test: /\.(jpe?g|png|gif|svg|ico)$/i,
+        loader: 'url-loader',
+        // optionsでfile-loaderを有効化する。
+        options: {
+          // limit  閾値。今回は2KB。
+          // name   limitを超える画像を、指定値でファイルとして分離する。
+          //        ※実際に指定値のファイルを作成するわけではなく、
+          //          そういうファイルがあるものとしてHTML上で処理される。
+          limit: 2048,
+          name: './images/[name].[ext]'
+        }
       }
     ]
   },
