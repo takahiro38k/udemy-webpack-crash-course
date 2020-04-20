@@ -1,4 +1,8 @@
 import _ from 'lodash'
+// import style from './style.css'
+import './style.css' // styleの取り込みはファイル名のみでOK。
+
+// console.log(style)
 
 /*
 import { NiJou, NAME } from './utilities'
@@ -19,10 +23,12 @@ console.log(Lion.say())
  */
 
 // default のimport名は自由に設定できる。
+/*
 import Tiger from './utilities'
 console.log(Tiger.say())
+ */
 
-const component = () => {
+ const component = () => {
   const element = document.createElement('div')
   const array = ['Hello', 'webpack!!', 'From JS']
   // CDNから利用するlodashは、最初からアンスコで利用できる。
@@ -32,3 +38,5 @@ const component = () => {
 }
 
 document.body.appendChild(component())
+// HTMLのbodyに'haikei'クラスを登録。
+document.body.classList.add('haikei')
