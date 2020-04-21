@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/takahiro38k/udemy-webpack-crash-course#readme",
   "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "babel-loader": "^8.1.0",
     "css-loader": "^3.5.2",
     "file-loader": "^6.0.0",
     "lodash": "^4.17.15",
@@ -29,5 +31,12 @@
     "webpack-cli": "^3.2.1",
     "webpack-dev-server": "^3.1.14"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@babel/preset-env": "7.9.5",
+    "@babel/preset-react": "^7.9.4",
+    "html-loader": "^1.1.0",
+    "html-webpack-plugin": "^4.2.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
 }

@@ -1,5 +1,6 @@
 // require('path') は Node.js の path module のこと。
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin') // プラグインの設定は最下部に記載。
 
 // path.resolve()
 // 1st para と 2nd para を連結し、絶対pathを作成する。
@@ -59,11 +60,28 @@ module.exports = {
           limit: 2048,
           name: './images/[name].[ext]'
         }
+      },
+      {
+        // React開発環境
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: "babel-loader"
+      },
+      {
+        // Reactとhtmlを結びつけるために必要
+        test: /\.html$/,
+        loader: "html-loader"
       }
     ]
   },
   devServer: {
     // index.htmlの格納場所を指定し、ブラウザで即時オープンできる。
     contentBase: outputPath
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/index.html',
+      filename: './index.html'
+    })
+  ]
 }

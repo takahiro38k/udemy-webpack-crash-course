@@ -1,49 +1,61 @@
-import _ from 'lodash'
-// import style from './style.css'
-import './style.css' // styleの取り込みはファイル名のみでOK。
-import './style.scss' // styleの取り込みはファイル名のみでOK。
-import logo from './logo.png'
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-// console.log(style)
+ReactDOM.render(
+  <div>Hello, React!</div>,
+  document.getElementById('root')
+)
 
-/*
-import { NiJou, NAME } from './utilities'
-console.log(NiJou(9))
-console.log(NAME)
+/**
+ * ❗️ 以降は通常のJSによる前章までの内容。 ❗️
  */
 
-/*
-import * as utilities from './utilities'
-console.log(utilities.NiJou(5))
-console.log(utilities.NAME)
- */
+// import _ from 'lodash'
+// // import style from './style.css'
+// import './style.css' // styleの取り込みはファイル名のみでOK。
+// import './style.scss' // styleの取り込みはファイル名のみでOK。
+// import logo from './logo.png'
 
-/*
-import Lion, { NAME as NAME_OF_HIM } from './utilities'
-console.log(NAME_OF_HIM)
-console.log(Lion.say())
- */
+// // console.log(style)
 
-// default のimport名は自由に設定できる。
-/*
-import Tiger from './utilities'
-console.log(Tiger.say())
- */
+// /*
+// import { NiJou, NAME } from './utilities'
+// console.log(NiJou(9))
+// console.log(NAME)
+//  */
 
- const component = () => {
-  const element = document.createElement('div')
-  const array = ['Hello', 'webpack!!', 'From JS']
-  // CDNから利用するlodashは、最初からアンスコで利用できる。
-  // array配列を半角スペースで連結。
-  element.innerHTML = _.join(array, ' ')
-  return element
-}
+// /*
+// import * as utilities from './utilities'
+// console.log(utilities.NiJou(5))
+// console.log(utilities.NAME)
+//  */
 
-document.body.appendChild(component())
-// HTMLのbodyに'haikei'クラスを登録。
-document.body.classList.add('haikei')
+// /*
+// import Lion, { NAME as NAME_OF_HIM } from './utilities'
+// console.log(NAME_OF_HIM)
+// console.log(Lion.say())
+//  */
 
-const image = new Image()
-image.src = logo
-// HTMLのimageタグに指定したファイルを設定
-document.body.appendChild(image)
+// // default のimport名は自由に設定できる。
+// /*
+// import Tiger from './utilities'
+// console.log(Tiger.say())
+//  */
+
+//  const component = () => {
+//   const element = document.createElement('div')
+//   const array = ['Hello', 'webpack!!', 'From JS']
+//   // CDNから利用するlodashは、最初からアンスコで利用できる。
+//   // array配列を半角スペースで連結。
+//   element.innerHTML = _.join(array, ' ')
+//   return element
+// }
+
+// document.body.appendChild(component())
+// // HTMLのbodyに'haikei'クラスを登録。
+// document.body.classList.add('haikei')
+
+// const image = new Image()
+// image.src = logo
+// // HTMLのimageタグに指定したファイルを設定
+// document.body.appendChild(image)
