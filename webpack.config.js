@@ -1,6 +1,7 @@
 // require('path') は Node.js の path module のこと。
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin') // プラグインの設定は最下部に記載。
+const MiniCssExtractPlugin = require('mini-css-extract-plugin') // プラグインの設定は最下部に記載。
 
 // path.resolve()
 // 1st para と 2nd para を連結し、絶対pathを作成する。
@@ -21,27 +22,44 @@ module.exports = {
   module: {
     rules: [
       {
-        // use: で指定するloaderをどのファイルに指定するか、正規表現で指定する。
-        test: /\.css$/,
-        // 使用するloaderを配列で指定する。
-        /**
-         * ❗️❗️❗️重要❗️❗️❗️
-         * loaderは【逆順】で実行される(A chain is executed in reverse order.)。
-         * なので、styleを適用、cssをjsのモジュールに変換して読み込み、
-         * という時系列と逆の並びでないとエラーとなる。
-         */
-        use: [
-          'style-loader',
-          'css-loader',
-        ]
+        // React開発環境
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: "babel-loader"
       },
+      /**
+       * ひとつ下のscssにまとめたのでコメントアウト。
+       */
+      // {
+      //   // use: で指定するloaderをどのファイルに指定するか、正規表現で指定する。
+      //   test: /\.css$/,
+      //   // 使用するloaderを配列で指定する。
+      //   /**
+      //    * ❗️❗️❗️重要❗️❗️❗️
+      //    * loaderは【逆順】で実行される(A chain is executed in reverse order.)。
+      //    * なので、styleを適用、cssをjsのモジュールに変換して読み込み、
+      //    * という時系列と逆の並びでないとエラーとなる。
+      //    */
+      //   use: [
+      //     // 'style-loader',
+      //     /**
+      //      * htmlにstyleタグを作るのではなく、プラグインでcssファイルに分離する。
+      //      */
+      //     MiniCssExtractPlugin.loader,
+      //     'css-loader',
+      //   ]
+      // },
       {
-        test: /\.scss$/,
+        test: /\.(sc|c)ss$/,
         /**
          * 上記にあるとおり、loaderは使用する順番と逆順で並べること。
          */
         use: [
-          'style-loader',
+          // 'style-loader',
+          /**
+           * htmlにstyleタグを作るのではなく、プラグインでcssファイルに分離する。
+           */
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'sass-loader',
         ]
@@ -62,12 +80,6 @@ module.exports = {
         }
       },
       {
-        // React開発環境
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: "babel-loader"
-      },
-      {
         // Reactとhtmlを結びつけるために必要
         test: /\.html$/,
         loader: "html-loader"
@@ -78,10 +90,16 @@ module.exports = {
     // index.htmlの格納場所を指定し、ブラウザで即時オープンできる。
     contentBase: outputPath
   },
+  // plugin は new を使ってインスタンスとして利用する。
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: './index.html'
+    }),
+    new MiniCssExtractPlugin({
+      // [name]はデフォルトで main となる。
+      // [hash]はbundle時にユニークなハッシュ値が入る。
+      filename: '[name].[hash].css'
     })
   ]
 }
