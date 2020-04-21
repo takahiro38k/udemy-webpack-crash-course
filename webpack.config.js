@@ -35,6 +35,17 @@ module.exports = {
         ]
       },
       {
+        test: /\.scss$/,
+        /**
+         * 上記にあるとおり、loaderは使用する順番と逆順で並べること。
+         */
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader',
+        ]
+      },
+      {
         // jpeg jpg 両方とも可とする。
         // i オプションで大文字・小文字の区別をなくす。
         test: /\.(jpe?g|png|gif|svg|ico)$/i,

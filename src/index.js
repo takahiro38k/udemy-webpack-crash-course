@@ -1,6 +1,7 @@
 import _ from 'lodash'
 // import style from './style.css'
 import './style.css' // styleの取り込みはファイル名のみでOK。
+import './style.scss' // styleの取り込みはファイル名のみでOK。
 import logo from './logo.png'
 
 // console.log(style)
