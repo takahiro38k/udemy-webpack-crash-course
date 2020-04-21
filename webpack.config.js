@@ -4,6 +4,7 @@ const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 // path.resolve()
 // 1st para と 2nd para を連結し、絶対pathを作成する。
@@ -106,12 +107,15 @@ module.exports = {
   ],
   optimization: {
     // 本番環境(production)での実行時に、不要なconsole.logを削除する。
-    minimizer: [new UglifyJsPlugin({
-      uglifyOptions: {
-        compress: {
-          drop_console: true
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          compress: {
+            drop_console: true
+          }
         }
-      }
-    })]
+      }),
+      new OptimizeCSSAssetsPlugin({})
+    ]
   }
 }
