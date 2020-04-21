@@ -1,7 +1,9 @@
 // require('path') は Node.js の path module のこと。
 const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin') // プラグインの設定は最下部に記載。
-const MiniCssExtractPlugin = require('mini-css-extract-plugin') // プラグインの設定は最下部に記載。
+// プラグインの設定は最下部に記載。
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 // path.resolve()
 // 1st para と 2nd para を連結し、絶対pathを作成する。
@@ -101,5 +103,15 @@ module.exports = {
       // [hash]はbundle時にユニークなハッシュ値が入る。
       filename: '[name].[hash].css'
     })
-  ]
+  ],
+  optimization: {
+    // 本番環境(production)での実行時に、不要なconsole.logを削除する。
+    minimizer: [new UglifyJsPlugin({
+      uglifyOptions: {
+        compress: {
+          drop_console: true
+        }
+      }
+    })]
+  }
 }
