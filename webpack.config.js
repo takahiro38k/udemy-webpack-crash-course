@@ -23,7 +23,17 @@ module.exports = {
     path: outputPath
   },
   module: {
+    // 💡rules: の中の loader は、下から上に実行される性質があるので注意。
     rules: [
+      {
+        // ESLintの設定
+        // コンパイルの前に構文チェックを行いたいので、
+        // enforce: "pre" によって配置場所に関係なく最初に実行するloaderとする。
+        enforce: "pre",
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        loader: "eslint-loader"
+      },
       {
         // React開発環境
         test: /\.jsx?$/,
