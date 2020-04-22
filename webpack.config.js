@@ -117,5 +117,8 @@ module.exports = {
       }),
       new OptimizeCSSAssetsPlugin({})
     ]
-  }
+  },
+  // オリジナルコードのソースマップを作成。
+  // https://webpack.js.org/configuration/devtool/
+  devtool: 'eval-source-map'
 }
